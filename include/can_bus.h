@@ -27,4 +27,11 @@ typedef struct {
     CANQueue inbox;
 } CANNode;
 
+/* init */
+void bus_init(CANBus* b);
+void node_init(CANNode* n, CANBus* b);
 
+/* io */
+int  node_send(CANNode* from, uint32_t id, const uint8_t* data, uint8_t dlc);
+int  node_pull_from_bus(CANNode* n);
+int  node_read(CANNode* n, struct can_frame* out);
