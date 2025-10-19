@@ -1,0 +1,33 @@
+# Build folders
+build/
+bin/
+obj/
+out/
+
+# Compiled object files
+*.o
+*.a
+*.so
+*.exe
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+
+# macOS files
+.DS_Store
+
+# CMake cache and generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# VSCode settings
+.vscode/
+
+# Python virtual environments (if used)
+venv/
+__pycache__/
+
