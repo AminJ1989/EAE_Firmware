@@ -11,4 +11,10 @@ cd build
 ctest --output-on-failure
 
 # Run main program with parameters
-./canpid --kp 2.0 --ki 0.5 --kd 0.1 --setpoint 40 --ambient 25 --dt 0.1
+./canpid \
+  --kp 2.0 --ki 0.5 --kd 0.1 \
+  --setpoint 40 \
+  --ambient 25 \
+  --duration 10 \
+  --ignition 1 \
+  --fan_delta 2.0

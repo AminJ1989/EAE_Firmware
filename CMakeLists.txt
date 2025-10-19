@@ -14,7 +14,11 @@ add_library(canpid_objs
   src/plant.c
   src/cli.c
 )
-target_include_directories(canpid_objs PUBLIC ${CMAKE_SOURCE_DIR}/src)
+target_include_directories(canpid_objs PUBLIC
+  ${CMAKE_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}/src
+)
+
 
 # Main executable
 add_executable(canpid src/main.c)
