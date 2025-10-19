@@ -1,5 +1,5 @@
 
-#include "fsm.h"
+#include "../include/fsm.h"
 
 static float clamp01(float x){ return x < 0.f ? 0.f : (x > 100.f ? 100.f : x); }
 
