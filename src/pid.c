@@ -16,10 +16,13 @@ void pid_init(PID* p, float kp, float ki, float kd, float out_min, float out_max
 
 /* update */
 float pid_update(PID* p, float err, float dt){
-    p->integ += err * dt;
-    float deriv = (dt > 0.0f) ? (err - p->prev_err) / dt : 0.0f;
-    float u = p->kp*err + p->ki*p->integ + p->kd*deriv;
-    p->prev_err = err;
+    
+    float e = -err;
+
+    p->integ += e * dt;
+    float deriv = (dt > 0.0f) ? (e - p->prev_err) / dt : 0.0f;
+    float u = p->kp*e + p->ki*p->integ + p->kd*deriv;
+    p->prev_err = e;
+
     return clampf(u, p->out_min, p->out_max);
 }
-
