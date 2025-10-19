@@ -13,7 +13,7 @@ void params_defaults(Params* p){
     p->fan_on_delta_c = 2.0f;
 }
 
-/* simple command-line parser: --key value */
+/* command-line parser: --key value */
 int params_parse(Params* p, int argc, char** argv){
     for (int i = 1; i < argc; i++) {
         if (i + 1 >= argc) break;
