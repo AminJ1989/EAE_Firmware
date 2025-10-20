@@ -130,9 +130,10 @@ Done.
 ## Continuous Integration (GitHub Actions)
 
 The project uses GitHub Actions for automated CI testing.
-Builds the project on Ubuntu
-Runs all unit tests (GoogleTest and CTest)
-Executes the main CLI simulation to verify correct behavior
+Builds the project on Ubuntu.
+Runs all unit tests (GoogleTest and CTest).
+Executes the main CLI simulation to verify correct behavior.
+
 Workflow file:
 .github/workflows/ci.yml
 
