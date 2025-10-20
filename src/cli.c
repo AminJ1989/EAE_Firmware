@@ -6,7 +6,7 @@
 /* set default runtime values */
 void params_defaults(Params* p){
     p->ambient_c      = 25.0f;
-    p->setpoint_c     = 40.0f;
+    p->setpoint_c     = 35.0f;
     p->kp = 2.0f; p->ki = 0.5f; p->kd = 0.2f;
     p->duration_s     = 20.0f;
     p->ignition_on    = 1;
