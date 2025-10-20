@@ -29,24 +29,3 @@ TEST(CAN, SendReceiveOneFrame) {
   EXPECT_EQ(rx.data[0], 1);
   EXPECT_EQ(rx.data[1], 2);
 }
-#include <gtest/gtest.h>
-extern "C" {
-#include "../include/can_bus.h"
-}
-
-TEST(CAN, SendReceiveOneFrame) {
-  CANBus b; bus_init(&b);
-  CANNode a, bn;
-  node_init(&a, &b);   // was node_init(&a, "A", &b, 1);
-  node_init(&bn, &b);  // was node_init(&bn, "B", &b, 0);
-
-  uint8_t d[2] = {1,2};
-  ASSERT_TRUE(node_send(&a, 0x123, d, 2));
-  ASSERT_TRUE(node_pull_from_bus(&bn));
-  struct can_frame rx;
-  ASSERT_TRUE(node_read(&bn, &rx));
-  EXPECT_EQ(rx.can_id, 0x123u);
-  EXPECT_EQ(rx.can_dlc, 2);
-  EXPECT_EQ(rx.data[0], 1);
-  EXPECT_EQ(rx.data[1], 2);
-}
