@@ -36,6 +36,9 @@ The program keeps printing the system’s status — time, temperature, and actu
 #define ID_FAN_CMD      0x201U
 
 
+
+
+
 static const char* state_str(FsmState s){
     switch (s) {
         case ST_OFF:     return "OFF";
@@ -70,6 +73,14 @@ int main(int argc, char** argv)
     CANBus bus;   bus_init(&bus);
     CANNode ctrl; node_init(&ctrl, &bus);
     CANNode ecu;  node_init(&ecu,  &bus);
+
+    /* Accept 0x100 and 0x101 on the controller: mask ignores bit0 (0x7FE) */
+    node_set_filter(&ctrl, ID_TEMP_REPORT, 0x7FEU);
+    node_filter_enable(&ctrl, 1);
+
+    /* Accept 0x200 and 0x201 on the ECU */
+    node_set_filter(&ecu,  0x200U, 0x7FEU);
+    node_filter_enable(&ecu, 1);
 
     /*  Sim loop timing  */
     const float dt = 0.5f;
