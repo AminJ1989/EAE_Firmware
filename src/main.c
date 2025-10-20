@@ -35,7 +35,6 @@ The program keeps printing the system’s status — time, temperature, and actu
 #define ID_PUMP_CMD     0x200U
 #define ID_FAN_CMD      0x201U
 
-static int valid_temp(float t){ return (t > -40.0f && t < 150.0f); }
 
 static const char* state_str(FsmState s){
     switch (s) {
@@ -110,11 +109,10 @@ int main(int argc, char** argv)
         }
 
         /* PID + FSM on Controller side */
-        int   sensor_ok = valid_temp(temp_seen);
         float err       = par.setpoint_c - temp_seen;
         float pid_out   = pid_update(&pid, err, dt);
         fsm_step(&fsm, ign_seen, temp_seen, par.setpoint_c,
-                 pid_out, par.fan_on_delta_c, sensor_ok, &act);
+                 pid_out, par.fan_on_delta_c, &act);
 
         /* Controller sends PUMP + FAN commands to ECU */
         {

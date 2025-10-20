@@ -26,7 +26,7 @@ typedef struct {
 /* init and step */
 void fsm_init(Fsm* f);
 void fsm_step(Fsm* f, int ignition_on, float temp_c, float setpoint_c,
-              float pid_out, float fan_on_delta_c, int sensor_ok,
+              float pid_out, float fan_on_delta_c,
               Actuators* act);
 
 #ifdef __cplusplus
